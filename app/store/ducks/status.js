@@ -20,9 +20,15 @@ export const HANDLERS = {
 export const statusReducer = createReducer(INITIAL_STATE, HANDLERS);
 
 // Action Creators
-export const changeStatus = (userName) => {
-  return {
-    type: 'CHANGE_STATUS',
-    payload: `${userName} is typing`,
+export const changeStatus = (text) => {
+  return (dispatch) => {
+    setTimeout(
+      () =>
+        dispatch({
+          type: Types.CHANGE_STATUS,
+          payload: `${text} is typing...`,
+        }),
+      1000
+    );
   };
 };
